@@ -1,0 +1,35 @@
+{
+    "name": "p3ym4n/jdate",
+    "type": "library",
+    "description": "A simple php date converter from Jalali to Georgian calendar and vice versa.",
+    "keywords": [
+        "shamsi",
+        "jalali",
+        "hijri",
+        "laravel",
+        "date",
+        "time",
+        "DateTime"
+    ],
+    "support": {
+        "issues": "https://github.com/p3ym4n/jdate/issues",
+        "source": "https://github.com/p3ym4n/jdate"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Peyman Goldaste",
+            "email": "me@p3ym4n.com",
+            "homepage": "http://p3ym4n.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.*",
+        "nesbot/carbon": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "p3ym4n\\jdate\\": "/"
+        }
+    }
+}
