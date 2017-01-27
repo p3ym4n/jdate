@@ -183,9 +183,11 @@ class jdate {
      * @param string|null              $date
      * @param DateTimeZone|string|null $tz
      */
-    public function __construct($date = null, $tz = null) {
+    protected function __construct($date = null, $tz = null) {
         
         $this->carbon = new Carbon($date, $tz);
+        
+        $this->updateJalaliFromGeorgian();
     }
     
     /**
@@ -195,7 +197,7 @@ class jdate {
      *
      * @return static
      */
-    public static function instance(Carbon $carbon) {
+    protected static function instance(Carbon $carbon) {
         
         return new static($carbon->format('Y-m-d H:i:s.u'), $carbon->getTimeZone());
     }
@@ -384,11 +386,7 @@ class jdate {
      */
     public static function createFromTimestamp($timestamp, $tz = null) {
         
-        $carbon = Carbon::now($tz);
-        
-        $carbon->setTimestamp($timestamp);
-        
-        return static::instance($carbon);
+        return static::createFromCarbon(Carbon::createFromTimestamp($timestamp, $tz));
         
     }
     
@@ -401,7 +399,7 @@ class jdate {
      */
     public static function createFromTimestampUTC($timestamp) {
         
-        return new static('@' . $timestamp);
+        return static::createFromCarbon(Carbon::createFromTimestampUTC($timestamp));
     }
     
     /**
@@ -782,7 +780,8 @@ class jdate {
     }
     
     /**
-     * returns the relative time or formatted based on the conditions
+     * if the date difference from/to now is less than $change the relative date returns
+     * otherwise the date returns in $format format
      *
      * @param int         $limit
      * @param null|string $format
