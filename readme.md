@@ -1,4 +1,4 @@
-# jdate
+# JDate
 
 A simple php date converter from Jalali to Georgian calendar and vice versa.
 
@@ -17,8 +17,8 @@ $ composer require p3ym4n/jdate
 
 require 'vendor/autoload.php';
  
-use p3ym4n\jdate\jdate;
- 
+use p3ym4n\JDate\JDate;
+
 jdate::now();                                   //1395-11-08 16:51:08
 jdate::today();                                 //1395-11-08 00:00:00
 jdate::tomorrow();                              //1395-11-09 00:00:00

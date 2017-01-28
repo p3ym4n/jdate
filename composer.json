@@ -29,8 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "p3ym4n\\jdate\\": "/"
+            "p3ym4n\\JDate\\": ""
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
