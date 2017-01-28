@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace p3ym4n\jdate;
+namespace p3ym4n\JDate;
 
 use Carbon\Carbon;
 use DateTimeZone;
@@ -45,7 +45,7 @@ use InvalidArgumentException;
  * @property-read string       $tzName
  * @package p3ym4n\JalaliDate
  */
-class jdate {
+class JDate {
     
     /**
      * Default format to use for __toString method when type juggling occurs.
