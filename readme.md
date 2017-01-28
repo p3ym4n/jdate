@@ -19,15 +19,15 @@ require 'vendor/autoload.php';
  
 use p3ym4n\JDate\JDate;
 
-jdate::now();                                   //1395-11-08 16:51:08
-jdate::today();                                 //1395-11-08 00:00:00
-jdate::tomorrow();                              //1395-11-09 00:00:00
-jdate::createFromTimestamp(1485523813);         //1395-11-08 17:00:13
-jdate::create(1395, 11, 11, 12, 13, 36);        //1395-11-11 12:13:36
-jdate::createFromFormat('Y/n/j', '1395/12/30'); //1395-12-30 17:01:21
+JDate::now();                                   //1395-11-08 16:51:08
+JDate::today();                                 //1395-11-08 00:00:00
+JDate::tomorrow();                              //1395-11-09 00:00:00
+JDate::createFromTimestamp(1485523813);         //1395-11-08 17:00:13
+JDate::create(1395, 11, 11, 12, 13, 36);        //1395-11-11 12:13:36
+JDate::createFromFormat('Y/n/j', '1395/12/30'); //1395-12-30 17:01:21
 
 $carbon = new Carbon\Carbon();
-$jdate = jdate::createFromCarbon($carbon);      //1395-11-08 17:32:43
+$jdate = JDate::createFromCarbon($carbon);      //1395-11-08 17:32:43
 
 //Some Relative Modifiers...
 $jdate->startOfDay();           //1395-11-08 00:00:00
