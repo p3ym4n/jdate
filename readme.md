@@ -14,6 +14,7 @@ $ composer require p3ym4n/jdate
  
 ```php
 <?php
+
 require 'vendor/autoload.php';
  
 use p3ym4n\JDate\JDate;
@@ -31,7 +32,7 @@ JDate::create(1395, 11, 11, 12, 13, 36);        //1395-11-11 12:13:36
 JDate::createFromFormat('Y/n/j', '1395/12/30'); //1395-12-30 17:01:21
 
 $carbon = new Carbon\Carbon();
-JDate::createFromCarbon($carbon);
+$jdate = jdate::createFromCarbon($carbon);      //1395-11-08 17:32:43
 
 //Some Relative Modifiers...
 $jdate->startOfDay();           //1395-11-08 00:00:00
