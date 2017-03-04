@@ -1831,7 +1831,7 @@ class JDate {
             static::MONTH_IN_SECONDS   => static::t('month'),
             static::YEAR_IN_SECONDS    => static::t('year'),
             static::DECADE_IN_SECONDS  => static::t('decade'),
-            static::CENTURY_IN_SECONDS => static::t('century'),
+            //static::CENTURY_IN_SECONDS => static::t('century'),
         ];
         
     }
