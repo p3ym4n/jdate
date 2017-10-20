@@ -16,7 +16,6 @@ use InvalidArgumentException;
 /**
  * A simple php date converter from Jalali to Georgian calendar and vice versa.
  * the georgian date object holder is @package Carbon\carbon
- *
  * @property Carbon            $carbon
  * @property int               $year
  * @property int               $yearIso
@@ -49,7 +48,6 @@ class JDate {
     
     /**
      * Default format to use for __toString method when type juggling occurs.
-     *
      * @var string
      */
     const DEFAULT_TO_STRING_FORMAT = 'Y-m-d H:i:s';
@@ -126,19 +124,19 @@ class JDate {
      */
     private $converted = false;
     
-    const MINUTE_IN_SECONDS  = 60;
+    const MINUTE_IN_SECONDS = 60;
     
-    const HOUR_IN_SECONDS    = 3600;        // 60 * 60
+    const HOUR_IN_SECONDS = 3600;        // 60 * 60
     
-    const DAY_IN_SECONDS     = 86400;       // 60 * 60 * 24
+    const DAY_IN_SECONDS = 86400;       // 60 * 60 * 24
     
-    const WEEK_IN_SECONDS    = 604800;      // 60 * 60 * 24 * 7
+    const WEEK_IN_SECONDS = 604800;      // 60 * 60 * 24 * 7
     
-    const MONTH_IN_SECONDS   = 2592000;     // 60 * 60 * 24 * 30
+    const MONTH_IN_SECONDS = 2592000;     // 60 * 60 * 24 * 30
     
-    const YEAR_IN_SECONDS    = 31557600;    // 60 * 60 * 24 * 365.25 ( Actual Factor is 365.24219852 )
+    const YEAR_IN_SECONDS = 31557600;    // 60 * 60 * 24 * 365.25 ( Actual Factor is 365.24219852 )
     
-    const DECADE_IN_SECONDS  = 315576000;   // 60 * 60 * 24 * 365.25 * 10
+    const DECADE_IN_SECONDS = 315576000;   // 60 * 60 * 24 * 365.25 * 10
     
     const CENTURY_IN_SECONDS = 3155760000;  // 60 * 60 * 24 * 365.25 * 10 * 10
     
@@ -148,7 +146,6 @@ class JDate {
      * @param DateTimeZone|string|null $object
      *
      * @throws InvalidArgumentException
-     *
      * @return DateTimeZone
      */
     protected static function safeCreateDateTimeZone($object) {
@@ -252,7 +249,6 @@ class JDate {
     
     /**
      * Create a JDate instance for the greatest supported date.
-     *
      * @return JDate
      */
     public static function maxValue() {
@@ -268,7 +264,6 @@ class JDate {
     
     /**
      * Create a JDate instance for the lowest supported date.
-     *
      * @return JDate
      */
     public static function minValue() {
@@ -284,10 +279,8 @@ class JDate {
     
     /**
      * Create a new instance from a specific date and time.
-     *
      * If any of $year, $month or $day are set to null their now() values
      * will be used.
-     *
      * If $hour is null it will be set to its now() value and the default values
      * for $minute and $second will be their now() values.
      * If $hour is not null then the default values for $minute and $second
@@ -307,18 +300,18 @@ class JDate {
         
         $instance = static::now($tz);
         
-        $instance->year  = $year === null ? $instance->year : $year;
-        $instance->month = $month === null ? $instance->month : $month;
-        $instance->day   = $day === null ? $instance->day : $day;
+        $year  = $year === null ? $instance->year : $year;
+        $month = $month === null ? $instance->month : $month;
+        $day   = $day === null ? $instance->day : $day;
         
         //time parts in georgian and jalali are the same
         if ($hour === null) {
-            $instance->hour   = date('G');
-            $instance->minute = $minute === null ? date('i') : $minute;
-            $instance->second = $second === null ? date('s') : $second;
+            $hour   = date('G');
+            $minute = $minute === null ? date('i') : $minute;
+            $second = $second === null ? date('s') : $second;
         } else {
-            $instance->minute = $minute === null ? 0 : $minute;
-            $instance->second = $second === null ? 0 : $second;
+            $minute = $minute === null ? 0 : $minute;
+            $second = $second === null ? 0 : $second;
         }
         
         return static::createFromFormat('Y-n-j G:i:s', sprintf('%s-%s-%s %s:%02s:%02s', $year, $month, $day, $hour, $minute, $second), $tz);
@@ -404,7 +397,6 @@ class JDate {
     
     /**
      * Get a copy of the instance
-     *
      * @return static
      */
     public function copy() {
@@ -437,7 +429,6 @@ class JDate {
      * but if the year is not in the range it uses the arithmetic algorithm
      *
      * @param int  $year the year in jalali date
-     *
      * @param bool $yearIsInGeorgian
      *
      * @return bool
@@ -497,7 +488,6 @@ class JDate {
      * @param int $year the year in jalali calendar
      *
      * @return int|number year in quad cycle
-     *
      */
     private static function calculateYearInQuadCycle($year) {
         
@@ -522,7 +512,6 @@ class JDate {
      * @param int $year the year in jalali calendar
      *
      * @return number
-     *
      */
     private static function calculateYearInGrandCycle($year) {
         
@@ -552,7 +541,6 @@ class JDate {
      * @param int $year the year in jalali calendar
      *
      * @return int
-     *
      */
     private static function calculateGrandCycle($year) {
         
@@ -807,7 +795,6 @@ class JDate {
      * @param string $name
      *
      * @throws InvalidArgumentException
-     *
      * @return string|int|DateTimeZone
      */
     public function __get($name) {
@@ -873,7 +860,6 @@ class JDate {
     
     /**
      * Format the instance as a string using the set format
-     *
      * @return string
      */
     public function __toString() {
@@ -883,7 +869,6 @@ class JDate {
     
     /**
      * Format the instance as date
-     *
      * @return string
      */
     public function toDateString() {
@@ -893,7 +878,6 @@ class JDate {
     
     /**
      * Format the instance as a readable date
-     *
      * @return string
      */
     public function toFormattedDateString() {
@@ -903,7 +887,6 @@ class JDate {
     
     /**
      * Format the instance as time
-     *
      * @return string
      */
     public function toTimeString() {
@@ -913,7 +896,6 @@ class JDate {
     
     /**
      * Format the instance as date and time
-     *
      * @return string
      */
     public function toDateTimeString() {
@@ -923,7 +905,6 @@ class JDate {
     
     /**
      * Format the instance with day, date and time
-     *
      * @return string
      */
     public function toDayDateTimeString() {
@@ -933,7 +914,6 @@ class JDate {
     
     /**
      * Format the instance as ATOM
-     *
      * @return string
      */
     public function toAtomString() {
@@ -943,7 +923,6 @@ class JDate {
     
     /**
      * Format the instance as COOKIE
-     *
      * @return string
      */
     public function toCookieString() {
@@ -953,7 +932,6 @@ class JDate {
     
     /**
      * Format the instance as ISO8601
-     *
      * @return string
      */
     public function toIso8601String() {
@@ -963,7 +941,6 @@ class JDate {
     
     /**
      * Format the instance as RFC822
-     *
      * @return string
      */
     public function toRfc822String() {
@@ -973,7 +950,6 @@ class JDate {
     
     /**
      * Format the instance as RFC850
-     *
      * @return string
      */
     public function toRfc850String() {
@@ -983,7 +959,6 @@ class JDate {
     
     /**
      * Format the instance as RFC1036
-     *
      * @return string
      */
     public function toRfc1036String() {
@@ -993,7 +968,6 @@ class JDate {
     
     /**
      * Format the instance as RFC1123
-     *
      * @return string
      */
     public function toRfc1123String() {
@@ -1003,7 +977,6 @@ class JDate {
     
     /**
      * Format the instance as RFC2822
-     *
      * @return string
      */
     public function toRfc2822String() {
@@ -1013,7 +986,6 @@ class JDate {
     
     /**
      * Format the instance as RFC3339
-     *
      * @return string
      */
     public function toRfc3339String() {
@@ -1023,7 +995,6 @@ class JDate {
     
     /**
      * Format the instance as RSS
-     *
      * @return string
      */
     public function toRssString() {
@@ -1033,7 +1004,6 @@ class JDate {
     
     /**
      * Format the instance as W3C
-     *
      * @return string
      */
     public function toW3cString() {
@@ -1144,11 +1114,11 @@ class JDate {
             $monthToSet = abs($monthToSet);
             $yearToSet--;
             
-            $yearToSet -= floor($monthToSet / 12);
+            $yearToSet  -= floor($monthToSet / 12);
             $monthToSet = 12 - ($monthToSet % 12);
             
         } elseif ($monthToSet > 12) {
-            $yearToSet += floor($monthToSet / 12);
+            $yearToSet  += floor($monthToSet / 12);
             $monthToSet = ($month % 12);
             if ($monthToSet == 0) {
                 $monthToSet = 12;
@@ -1179,7 +1149,7 @@ class JDate {
             
             while ($dayToSet > $maximumDayOfMonth) {
                 $dayToSet -= $maximumDayOfMonth;
-                $month = $this->month - 1;
+                $month    = $this->month - 1;
                 $this->setMonth($month);
                 $maximumDayOfMonth = static::getMonthLength($this->month, $this->year);
             }
@@ -1191,7 +1161,7 @@ class JDate {
         } elseif ($dayToSet > $maximumDayOfMonth) {
             while ($dayToSet > $maximumDayOfMonth) {
                 $dayToSet -= $maximumDayOfMonth;
-                $month = $this->month + 1;
+                $month    = $this->month + 1;
                 $this->setMonth($month);
                 $maximumDayOfMonth = static::getMonthLength($this->month, $this->year);
             }
@@ -1711,7 +1681,6 @@ class JDate {
     
     /**
      * Resets the time to 00:00:00
-     *
      * @return static
      */
     public function startOfDay() {
@@ -1721,7 +1690,6 @@ class JDate {
     
     /**
      * Resets the time to 23:59:59
-     *
      * @return static
      */
     public function endOfDay() {
@@ -1731,7 +1699,6 @@ class JDate {
     
     /**
      * Resets the date to the first day of the month and the time to 00:00:00
-     *
      * @return static
      */
     public function startOfMonth() {
@@ -1741,7 +1708,6 @@ class JDate {
     
     /**
      * Resets the date to end of the month and time to 23:59:59
-     *
      * @return static
      */
     public function endOfMonth() {
@@ -1753,7 +1719,6 @@ class JDate {
     
     /**
      * Resets the date to the first day of the year and the time to 00:00:00
-     *
      * @return static
      */
     public function startOfYear() {
@@ -1763,7 +1728,6 @@ class JDate {
     
     /**
      * Resets the date to end of the year and time to 23:59:59
-     *
      * @return static
      */
     public function endOfYear() {
@@ -1773,7 +1737,6 @@ class JDate {
     
     /**
      * Resets the date to the first day of the decade and the time to 00:00:00
-     *
      * @return static
      */
     public function startOfDecade() {
@@ -1783,7 +1746,6 @@ class JDate {
     
     /**
      * Resets the date to end of the decade and time to 23:59:59
-     *
      * @return static
      */
     public function endOfDecade() {
@@ -1793,7 +1755,6 @@ class JDate {
     
     /**
      * Resets the date to the first day of the century and the time to 00:00:00
-     *
      * @return static
      */
     public function startOfCentury() {
@@ -1803,7 +1764,6 @@ class JDate {
     
     /**
      * Resets the date to end of the century and time to 23:59:59
-     *
      * @return static
      */
     public function endOfCentury() {
@@ -1823,14 +1783,14 @@ class JDate {
     public static function scopes() {
         
         return [
-            1                          => static::t('second'),
-            static::MINUTE_IN_SECONDS  => static::t('minute'),
-            static::HOUR_IN_SECONDS    => static::t('hour'),
-            static::DAY_IN_SECONDS     => static::t('day'),
-            static::WEEK_IN_SECONDS    => static::t('week'),
-            static::MONTH_IN_SECONDS   => static::t('month'),
-            static::YEAR_IN_SECONDS    => static::t('year'),
-            static::DECADE_IN_SECONDS  => static::t('decade'),
+            1                         => static::t('second'),
+            static::MINUTE_IN_SECONDS => static::t('minute'),
+            static::HOUR_IN_SECONDS   => static::t('hour'),
+            static::DAY_IN_SECONDS    => static::t('day'),
+            static::WEEK_IN_SECONDS   => static::t('week'),
+            static::MONTH_IN_SECONDS  => static::t('month'),
+            static::YEAR_IN_SECONDS   => static::t('year'),
+            static::DECADE_IN_SECONDS => static::t('decade'),
             //static::CENTURY_IN_SECONDS => static::t('century'),
         ];
         
@@ -2102,7 +2062,7 @@ class JDate {
             
             // checking to make the year absolute
             if (strlen($yearToSet) == 2) {
-                $instance = static::now();
+                $instance  = static::now();
                 $yearToSet += (int) ($instance->format('Y') - $instance->format('y'));
             }
         }
@@ -2193,7 +2153,6 @@ class JDate {
      * day of the Jalali year (jy).
      *
      * @param int  $year Jalali calendar year (-61 to 3177)
-     *
      * @param bool $yearIsInGeorgian
      *
      * @return array leap: number of years since the last leap year (0 to 4)
@@ -2213,7 +2172,7 @@ class JDate {
         $gYear = $year + static::HEGIRA_STARTING_YEAR;
         if ($yearIsInGeorgian) {
             $start += static::HEGIRA_STARTING_YEAR;
-            $end += static::HEGIRA_STARTING_YEAR;
+            $end   += static::HEGIRA_STARTING_YEAR;
             $gYear = $year;
         }
         
@@ -2373,7 +2332,7 @@ class JDate {
                 $passed -= 186;
             }
         } else {
-            $year -= 1;
+            $year   -= 1;
             $passed += 179;
             
             if ($parsed['leap'] === 1) {
