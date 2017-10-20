@@ -1,6 +1,6 @@
 # JDate
 
-A simple php date converter from Jalali to Georgian calendar and vice versa.
+Date converter from Jalali to Georgian and vice versa. It has Carbon instance inside and it's Laravel friendly.
 
 This package is using [carbon](https://github.com/briannesbitt/carbon) as core for Georgian calendar.
 

@@ -1,7 +1,7 @@
 {
     "name": "p3ym4n/jdate",
     "type": "library",
-    "description": "A simple php date converter from Jalali to Georgian calendar and vice versa.",
+    "description": "Date converter from Jalali to Georgian and vice versa. It has Carbon instance inside and it's Laravel friendly.",
     "keywords": [
         "shamsi",
         "jalali",
